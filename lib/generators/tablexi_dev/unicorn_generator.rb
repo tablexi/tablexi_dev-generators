@@ -8,11 +8,9 @@ module TablexiDev
 
       source_root File.expand_path("../unicorn_generator/templates", __FILE__)
 
-      class_option :domain, type: :string, default: "[production-domain]"
-
       def set_variables
         @app_name = Rails.application.class.parent.to_s.underscore
-        @production_domain = options["domain"]
+        @production_domain = ask("What is the production domain? (leave blank if you don't know yet)").presence || "[production-domain]"
       end
 
       def add_files

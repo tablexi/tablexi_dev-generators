@@ -14,7 +14,7 @@ Install just the ones you want:
 
 ```bash
 bin/rails g tablexi_dev:rubocop
-bin/rails g tablexi_dev:unicorn --domain www.mydomain.com
+bin/rails g tablexi_dev:unicorn
 ```
 
 ## Installation
