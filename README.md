@@ -4,9 +4,17 @@ Set of generators for Table XI projects.
 
 ## Usage
 
+Install everything:
+
 ```bash
-bin/rails g tablexi:base:rubocop
-bin/rails g tablexi:base:unicorn --domain www.mydomain.com
+rails g tablexi_dev:all
+```
+
+Install just the ones you want:
+
+```bash
+bin/rails g tablexi_dev:rubocop
+bin/rails g tablexi_dev:unicorn --domain www.mydomain.com
 ```
 
 ## Installation
