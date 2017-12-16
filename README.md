@@ -21,7 +21,7 @@ bin/rails g tablexi_dev:unicorn
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "tablexi_dev-generators", github: "tablexi/tablexi_dev-generators"
+gem "tablexi_dev-generators", git: "git@github.com:tablexi/tablexi_dev-generators.git"
 ```
 
 And then execute:
