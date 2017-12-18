@@ -76,3 +76,10 @@ Style/TrailingCommaInLiteral:
 
 Style/TrivialAccessors:
   ExactNameMatch: true
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - stage
