@@ -4,7 +4,7 @@ AllCops:
     - ".bundle/**/*" # Auto-generated
     - "bin/**/*"     # Auto-generated
     - "vendor/**/*"  # We cannot solve the world's problems
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 Rails:
   Enabled: true
 
