@@ -1,3 +1,8 @@
+# This file is generated as a part of the tablexi_dev-generators project
+#
+# You should NOT make any changes to this file, as it will be overwritten
+# the next time we update the tablexi_dev-generators gem and run
+# `rails generate tablexi_dev:rubocop`
 AllCops:
   Exclude:
     - "db/schema.rb" # You can't touch this

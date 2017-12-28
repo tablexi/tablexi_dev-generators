@@ -1,9 +1,20 @@
 inherit_from:
-  - .rubocop-txi.yml
+  - lib/generators/tablexi_dev/rubocop_generator/files/dot_rubocop-txi.yml
 
-# Overrides can go here, but try to conform to TXI standards when possible.
-#
-# Example...
-# Metrics/CyclomaticComplexity:
-#   Enabled: false # We've got nasty methods!
-#
+# Project-specific overrides:
+AllCops:
+  Exclude:
+    - "test/dummy/**/*" # Auto-generated
+    - ".bundle/**/*" # Auto-generated
+    - "bin/**/*"     # Auto-generated
+
+Style/Documentation:
+  Enabled: false
+
+Lint/ScriptPermission:
+  Exclude:
+    - "lib/generators/tablexi_dev/rubocop_generator/files/pre-commit"
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - "lib/generators/tablexi_dev/rubocop_generator/files/pre-commit"

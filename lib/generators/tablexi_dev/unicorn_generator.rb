@@ -10,7 +10,8 @@ module TablexiDev
 
       def set_variables
         @app_name = Rails.application.class.parent.to_s.underscore
-        @production_domain = ask("What is the production domain? (leave blank if you don't know yet)").presence || "[production-domain]"
+        user_answer = ask("What is the production domain? (leave blank if you don't know yet)")
+        @production_domain = user_answer.presence || "[production-domain]"
       end
 
       def add_files
