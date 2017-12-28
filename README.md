@@ -79,7 +79,33 @@ To install this pre-commit hook on your development environment, run:
 
 ## Usage with CircleCI
 
-Note: when using Circle CI, you will have to authorize a User Key in order to check out the private `tablexi_dev-generators` git repo.
+Note: when using Circle CI, if you want to check out the private `tablexi_dev-generators` git repo, you will have to authorize a User Key.
+
+Instead of providing a private user key, we recommend refraining from gem-installing the `development` group as follows.
+
+CircleCI 1.0:
+
+```
+database:
+  pre:
+    - bundle config without development
+```
+
+CircleCI 2.0:
+
+```
+version: 2
+jobs:
+  build:
+
+    ...
+
+    steps:
+
+      ...
+
+      - run: bundle install --without=development --path vendor/bundle
+```
 
 ## Contributing
 Contribution directions go here.
