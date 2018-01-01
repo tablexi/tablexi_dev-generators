@@ -1,0 +1,2 @@
+#!/bin/sh
+# This is a general pre-commit hook, other hooks will be invoked from here

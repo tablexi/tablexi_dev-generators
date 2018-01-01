@@ -22,7 +22,13 @@ module TablexiDev
           copy_file "dot_rubocop-project_overrides.yml", ".rubocop-project_overrides.yml"
         end
 
-        copy_file "pre-commit", ".git/hooks/pre-commit" if yes?("install a pre-commit hook to run rubocop?")
+        if yes?("install a pre-commit hook to run rubocop?")
+          copy_file "rubocop-pre-commit", ".git/hooks/rubocop-pre-commit"
+          chmod ".git/hooks/rubocop-pre-commit", 0755
+
+          copy_file "general-pre-commit", ".git/hooks/pre-commit" unless File.exist?(".git/hooks/pre-commit")
+          append_to_file(".git/hooks/pre-commit", "exec .git/hooks/rubocop-pre-commit")
+        end
       end
 
       def add_gem
