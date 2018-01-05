@@ -36,7 +36,7 @@ module TablexiDev
         # if the Gemfile already has 'rubocop' in a format other
         # than the exact format we expect.
         content = File.read("Gemfile")
-        gem "rubocop", group: :development, require: false unless content.include?("rubocop")
+        gem "rubocop", group: [:development, :test], require: false unless content.include?("rubocop")
       end
 
     end
