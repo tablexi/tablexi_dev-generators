@@ -3,6 +3,8 @@
 
 require "rubocop"
 
-system("rubocop -a")
+# We choose not to auto-correct so that the return code is non-0
+# causing the pre-push to prevent the 'git push' from doing it.
+system("rubocop")
 
 exit $CHILD_STATUS.to_s[-1].to_i
