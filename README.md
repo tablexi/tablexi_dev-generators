@@ -37,7 +37,9 @@ The unicorn generator sets up a project's unicorn configuration files.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "tablexi_dev-generators", git: "git@github.com:tablexi/tablexi_dev-generators.git"
+group :development do
+  gem "tablexi_dev-generators", git: "git@github.com:tablexi/tablexi_dev-generators.git"
+end
 ```
 
 And then execute:
