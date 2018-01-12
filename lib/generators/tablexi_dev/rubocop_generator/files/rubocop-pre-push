@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "rubocop"
+
+system("rubocop -a")
+
+exit $CHILD_STATUS.to_s[-1].to_i

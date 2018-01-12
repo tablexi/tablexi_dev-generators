@@ -9,8 +9,10 @@ module TablexiDev
       source_root File.expand_path("../rubocop_generator/files/", __FILE__)
 
       def copy_files
-        copy_file "dot_rubocop.yml", ".rubocop.yml"
-        copy_file "dot_rubocop-txi.yml", ".rubocop-txi.yml"
+        if yes?("Install the .rubocop.yml and .rubocop-txi.yml")
+          copy_file "dot_rubocop.yml", ".rubocop.yml"
+          copy_file "dot_rubocop-txi.yml", ".rubocop-txi.yml"
+        end
 
         # Create a .rubocop_todo file, which may be generated
         # by the `rubocop --auto-gen-config` command
@@ -22,12 +24,20 @@ module TablexiDev
           copy_file "dot_rubocop-project_overrides.yml", ".rubocop-project_overrides.yml"
         end
 
-        if yes?("install a pre-commit hook to run rubocop?")
+        if yes?("install a pre-commit hook to run rubocop before each 'git commit'?")
           copy_file "rubocop-pre-commit", ".git/hooks/rubocop-pre-commit"
           chmod ".git/hooks/rubocop-pre-commit", 0755
 
           copy_file "general-pre-commit", ".git/hooks/pre-commit" unless File.exist?(".git/hooks/pre-commit")
           append_to_file(".git/hooks/pre-commit", "exec .git/hooks/rubocop-pre-commit")
+        end
+
+        if yes?("install a pre-push hook to run rubocop before each 'git push'?")
+          copy_file "rubocop-pre-push", ".git/hooks/rubocop-pre-push"
+          chmod ".git/hooks/rubocop-pre-push", 0755
+
+          copy_file "general-pre-push", ".git/hooks/pre-push" unless File.exist?(".git/hooks/pre-push")
+          append_to_file(".git/hooks/pre-push", "exec .git/hooks/rubocop-pre-push")
         end
       end
 

@@ -4,6 +4,7 @@
 # the next time we update the tablexi_dev-generators gem and run
 # `rails generate tablexi_dev:rubocop`
 AllCops:
+  DisplayCopNames: true
   Exclude:
     - "db/schema.rb" # You can't touch this
     - ".bundle/**/*" # Auto-generated
