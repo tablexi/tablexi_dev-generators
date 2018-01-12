@@ -10,11 +10,3 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
-
-Lint/ScriptPermission:
-  Exclude:
-    - "lib/generators/tablexi_dev/rubocop_generator/files/pre-commit"
-
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - "lib/generators/tablexi_dev/rubocop_generator/files/pre-commit"
