@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require "rubocop"
 
@@ -33,4 +34,3 @@ unless changed_files.empty?
 end
 
 exit $CHILD_STATUS.to_s[-1].to_i
-
