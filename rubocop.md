@@ -72,23 +72,11 @@ engines:
 
 The following is recommended to be added to your README, so that new developers get the benefits of the pre-commit hooks for rubocop:
 
-```
 ## Development Setup
 
 CircleCI runs rubocop as part of the CI process, and thus it is recommended that you run rubocop as a git hook as part of your git workflow.
 
-To do so, we recommend installing a git pre-commit or pre-push hook into your git project. These are available through the `tablexi_dev-generators` gem.
-
-Note: git hooks cannot be easily committed to the repository, and so they must be installed on each developer's machine manually. This also gives each developer the flexibility to choose the workflow that works best for them.
-
-To install a git hook on your development environment, run:
-
-`bundle exec rails g tablexi_dev:rubocop`
-
-and follow the prompts to install what you desire.
-
-```
-
+Follow the [New Development Environment](#situation-setting-up-a-new-development-environment) instructions to set up automatic rubocop execution.
 
 ### Situation: Update rubocop rules
 
@@ -108,16 +96,30 @@ running `rails g tablexi_dev:rubocop` will replace the existing `.rubocop-txi.ym
   - Run `rubocop --auto-gen-config` in order to have rubocop analyze your project, and create a `.rubocop_todo.yml` for any deviations
 - Inspect the `.rubocop_todo.yml` contents, and address them, or move them into the `.rubocop-project_overrides.yml` if they are going to become permanent project-specific deviations from the standard.
 
-
 ### Situation: Setting up a new development environment
 
 Each project is expected to run rubocop as part of the PR process, and thus it is highly encouraged that each developer put in place a process to run `rubocop` before they push the changes to github (ie: before triggering the CI build).
 
-We recommend using git hooks to trigger rubocop.
+#### Development Editor Linters
 
-To install either of these hooks, run `rails g tablexi_dev:rubocop`, and follow the prompts to install the hooks as you choose.
+Most Editors have the ability to automatically run rubocop, and display warnings inline in your editor. This helps you to see the warnings as you change code, so that you can fix them as you write them.
 
-#### Option 1: git pre-commit hook
+- [SublimeText](https://www.sublimetext.com/) has support for this through the [SublimeLinter-rubocop](https://github.com/SublimeLinter/SublimeLinter-rubocop) linter.
+- [Atom](https://atom.io/) has support for this through the [linter-rubocop](https://atom.io/packages/linter-rubocop) linter, which depends on [this linter](https://github.com/steelbrain/linter).
+
+#### Git Hooks
+
+To run rubocop before pushing to CI, we recommend installing a git pre-commit or pre-push hook into your git project. These are available through the `tablexi_dev-generators` gem.
+
+Note: git hooks cannot be easily committed to the repository, and so they must be installed on each developer's machine manually. This also gives each developer the flexibility to choose the workflow that works best for them.
+
+To install a git hook on your development environment, run:
+
+`bundle exec rails g tablexi_dev:rubocop`
+
+and follow the prompts to install the hooks that you desire.
+
+##### Option 1: git pre-commit hook
 
 Running rubocop in a pre-commit hook provides the following benefits:
 
@@ -129,7 +131,7 @@ It has the following downsides:
 - It introduces some delay to `git commit` step, as it has to run
 - It may introduce changes to your code unexpectedly, since it auto-corrects the changed files if it can, before doing the `git commit`.
 
-#### Option 2: git pre-push hook
+##### Option 2: git pre-push hook
 
 Running rubocop in a pre-push hook provides the following benefits:
 
