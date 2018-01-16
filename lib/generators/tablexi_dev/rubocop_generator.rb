@@ -26,10 +26,8 @@ module TablexiDev
       private
 
       def install_rubocop_config_files
-        if yes?("Install the .rubocop.yml and .rubocop-txi.yml")
-          copy_file "dot_rubocop.yml", ".rubocop.yml"
-          copy_file "dot_rubocop-txi.yml", ".rubocop-txi.yml"
-        end
+        copy_file "dot_rubocop.yml", ".rubocop.yml"
+        copy_file "dot_rubocop-txi.yml", ".rubocop-txi.yml"
 
         # Create a .rubocop_todo file, which may be generated
         # by the `rubocop --auto-gen-config` command
