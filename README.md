@@ -58,15 +58,16 @@ Note: when using Circle CI, if you want to check out the private `tablexi_dev-ge
 
 Instead of providing a private user key, we recommend refraining from gem-installing the `development` group as follows.
 
-CircleCI 1.0:
+### CircleCI 1.0 - configure the system bundle config:
 
 ```
-database:
+dependencies:
   pre:
+    - gem install bundler # newer versions of bundler handle 'without' better
     - bundle config without development
 ```
 
-CircleCI 2.0:
+### CircleCI 2.0 - adjust the `bundle install` command:
 
 ```
 version: 2
@@ -81,9 +82,3 @@ jobs:
 
       - run: bundle install --without=development --path vendor/bundle
 ```
-
-## Contributing
-Contribution directions go here.
-
-## License
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
