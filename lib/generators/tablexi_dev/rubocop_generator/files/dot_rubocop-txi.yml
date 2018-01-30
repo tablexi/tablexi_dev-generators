@@ -89,3 +89,7 @@ Rails/UnknownEnv:
     - development
     - test
     - stage
+
+Rails/ApplicationRecord:
+  Exclude:
+    - "db/**/*" # Migrations should be isolated, models defined there should NOT inherit from ApplicationRecord
