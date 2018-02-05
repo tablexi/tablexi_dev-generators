@@ -11,6 +11,7 @@ AllCops:
     - "bin/**/*"     # Auto-generated
     - "vendor/**/*"  # We cannot solve the world's problems
   TargetRubyVersion: 2.4
+  TargetRailsVersion: 5.1
 Rails:
   Enabled: true
 

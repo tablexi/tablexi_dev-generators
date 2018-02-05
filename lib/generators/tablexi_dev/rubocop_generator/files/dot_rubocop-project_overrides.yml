@@ -6,4 +6,6 @@
 #
 #
 # Example...
-# TargetRubyVersion: 2.3
+# AllCops:
+#   TargetRubyVersion: 2.3
+#   TargetRailsVersion: 4.2
