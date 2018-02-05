@@ -1,12 +1,8 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
-
-require "rubocop"
+#!/bin/sh
 
 # We choose not to auto-correct so that the return code is non-0
 # causing the pre-push to prevent the 'git push' from doing it.
 # This will run Rubocop on all files tracked with git, ignoring any files in the
 # repo's .gitignore or your .gitignore_global.
-system("bundle exec rubocop  --force-exclusion `git ls-tree -r HEAD --name-only`")
 
-exit $CHILD_STATUS.to_s[-1].to_i
+bundle exec rubocop --force-exclusion `git ls-tree -r HEAD --name-only`
