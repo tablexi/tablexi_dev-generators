@@ -5,5 +5,5 @@
 # `rails generate tablexi_dev:rubocop`
 inherit_from:
   - .rubocop-txi.yml
-  - .rubocop_todo.yml
   - .rubocop-project_overrides.yml
+  - .rubocop_todo.yml
