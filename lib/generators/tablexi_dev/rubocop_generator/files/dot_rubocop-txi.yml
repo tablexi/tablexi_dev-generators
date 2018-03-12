@@ -36,6 +36,7 @@ Metrics/BlockLength:
   Exclude:
     # These are naturally DSL-y, and so let's be lenient.
     - "spec/**/*"
+    - "config/routes.rb"
 
 Style/ClassAndModuleChildren:
   Exclude:
