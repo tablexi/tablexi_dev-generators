@@ -5,5 +5,11 @@
 # `rails generate tablexi_dev:rubocop`
 inherit_from:
   - .rubocop-txi.yml
-  - .rubocop_todo.yml
   - .rubocop-project_overrides.yml
+  - .rubocop_todo.yml
+
+# Allow the list of files Excluded by .rubocop-txi to be merged
+# with files excluded by the .rubocop-project_overrides and .rubocop_todo files
+inherit_mode:
+  merge:
+    - Exclude

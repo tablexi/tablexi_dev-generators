@@ -29,7 +29,7 @@ changed_files =
   .join("' '")
 
 unless changed_files.empty?
-  system("rubocop -a --force-exclusion '#{changed_files}'")
+  system("bundle exec rubocop -a --force-exclusion '#{changed_files}'")
   system("git add '#{changed_files}'")
 end
 

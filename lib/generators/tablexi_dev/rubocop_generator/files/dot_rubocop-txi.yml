@@ -11,6 +11,7 @@ AllCops:
     - "bin/**/*"     # Auto-generated
     - "vendor/**/*"  # We cannot solve the world's problems
   TargetRubyVersion: 2.4
+  TargetRailsVersion: 5.1
 Rails:
   Enabled: true
 
@@ -35,6 +36,7 @@ Metrics/BlockLength:
   Exclude:
     # These are naturally DSL-y, and so let's be lenient.
     - "spec/**/*"
+    - "config/routes.rb"
 
 Style/ClassAndModuleChildren:
   Exclude:
@@ -77,7 +79,10 @@ Style/StringLiterals:
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
 Style/TrivialAccessors:
