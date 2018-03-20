@@ -52,6 +52,10 @@ Or install it yourself as:
 $ gem install tablexi_dev-generators
 ```
 
+### Upgrading
+
+After upgrading it's recommended that you re-run the generators and verify that the changed files are correct.
+
 ## Circle CI issue with Private repository
 
 Note: when using Circle CI, if you want to check out the private `tablexi_dev-generators` git repo, you will have to authorize a User Key.
