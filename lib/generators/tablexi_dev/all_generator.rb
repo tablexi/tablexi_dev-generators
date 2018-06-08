@@ -7,6 +7,7 @@ module TablexiDev
     class AllGenerator < Rails::Generators::Base
 
       GENERATORS = %i[
+        git_hook
         rubocop
         unicorn
       ].freeze
