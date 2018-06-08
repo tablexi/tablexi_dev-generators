@@ -10,7 +10,7 @@ Install everything:
 bundle exec rails g tablexi_dev:all
 ```
 
-Install just the ones you want:
+Or install only the ones you want:
 
 ```bash
 bundle exec rails g tablexi_dev:git_hook
@@ -33,14 +33,9 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install tablexi_dev-generators
-```
-
 ## Upgrading
 
-After upgrading it's recommended that you re-run the generators and verify that the changed files are correct.
+After upgrading this gem, it's recommended that you re-run the generators and verify that the changed files are correct.
 
 ## The Generators
 

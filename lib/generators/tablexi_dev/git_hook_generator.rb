@@ -9,27 +9,27 @@ module TablexiDev
       source_root File.expand_path("../git_hook_generator/files/", __FILE__)
 
       def copy_files
-        install_pre_commit_hook
-        install_pre_push_hook
+        maybe_install_rubocop_hook_pre "push"
+        maybe_install_rubocop_hook_pre "commit"
       end
 
       private
 
-      def install_pre_commit_hook
-        return unless yes?("Would you like to automatically run rubocop before each 'git commit'?")
+      def maybe_install_rubocop_hook_pre(type)
+        return unless yes?("Would you like to automatically run rubocop before each 'git #{type}'?")
 
-        copy_file "rubocop-pre-commit", ".git/hooks/rubocop-pre-commit"
-        chmod ".git/hooks/rubocop-pre-commit", 0o755
-        copy_and_set_executable("general-pre-commit", ".git/hooks/pre-commit") unless File.exist?(".git/hooks/pre-commit") # rubocop:disable Metrics/LineLength
-        append_to_file(".git/hooks/pre-commit", "exec .git/hooks/rubocop-pre-commit")
-      end
+        # Define pre-hook file paths
+        rubocop_path = ".git/hooks/rubocop-pre-#{type}"
+        general_path = ".git/hooks/pre-#{type}"
 
-      def install_pre_push_hook
-        return unless yes?("Would you like to automatically run rubocop before each 'git push'?")
+        # Copy files from this generator into the project
+        copy_and_set_executable("rubocop-pre-#{type}", rubocop_path)
+        copy_and_set_executable("general-pre-#{type}", general_path) unless File.exist?(general_path)
 
-        copy_and_set_executable("rubocop-pre-push", ".git/hooks/rubocop-pre-push")
-        copy_and_set_executable("general-pre-push", ".git/hooks/pre-push") unless File.exist?(".git/hooks/pre-push")
-        append_to_file(".git/hooks/pre-push", "exec .git/hooks/rubocop-pre-push")
+        # Ensure we do not append to the general hook file more than once
+        unless File.readlines(general_path).grep(/rubocop-pre-#{type}/).size > 0
+          append_to_file(general_path, "exec #{rubocop_path}")
+        end
       end
 
     end
