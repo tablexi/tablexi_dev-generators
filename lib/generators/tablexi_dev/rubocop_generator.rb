@@ -10,9 +10,6 @@ module TablexiDev
 
       def copy_files
         install_rubocop_config_files
-
-        install_pre_commit_hook
-        install_pre_push_hook
       end
 
       def add_gem
@@ -38,25 +35,6 @@ module TablexiDev
         unless File.exist?(".rubocop-project_overrides.yml") # rubocop:disable Style/GuardClause
           copy_file "dot_rubocop-project_overrides.yml", ".rubocop-project_overrides.yml"
         end
-      end
-
-      def install_pre_commit_hook
-        return unless yes?("install a pre-commit hook to run rubocop before each 'git commit'?")
-
-        copy_file "rubocop-pre-commit", ".git/hooks/rubocop-pre-commit"
-        chmod ".git/hooks/rubocop-pre-commit", 0o755
-
-        copy_and_set_executable("general-pre-commit", ".git/hooks/pre-commit") unless File.exist?(".git/hooks/pre-commit") # rubocop:disable Metrics/LineLength
-        append_to_file(".git/hooks/pre-commit", "exec .git/hooks/rubocop-pre-commit")
-      end
-
-      def install_pre_push_hook
-        return unless yes?("install a pre-push hook to run rubocop before each 'git push'?")
-
-        copy_and_set_executable("rubocop-pre-push", ".git/hooks/rubocop-pre-push")
-
-        copy_and_set_executable("general-pre-push", ".git/hooks/pre-push") unless File.exist?(".git/hooks/pre-push")
-        append_to_file(".git/hooks/pre-push", "exec .git/hooks/rubocop-pre-push")
       end
 
       def copy_and_set_executable(source_file, target_file)

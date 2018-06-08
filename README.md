@@ -10,9 +10,10 @@ Install everything:
 bundle exec rails g tablexi_dev:all
 ```
 
-Install just the ones you want:
+Or install only the ones you want:
 
 ```bash
+bundle exec rails g tablexi_dev:git_hook
 bundle exec rails g tablexi_dev:rubocop
 bundle exec rails g tablexi_dev:unicorn
 ```
@@ -32,16 +33,17 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install tablexi_dev-generators
-```
-
 ## Upgrading
 
-After upgrading it's recommended that you re-run the generators and verify that the changed files are correct.
+After upgrading this gem, it's recommended that you re-run the generators and verify that the changed files are correct.
 
 ## The Generators
+
+### Git Hooks
+
+This generator will guide you through installing git hooks. If you do not have a strong preference, we recommend installing the `pre-push` rubocop hook.
+
+Because git hooks do not get checked into the remote repository, it's recommended that each team member run this generator upon installing any project on their local machine.
 
 ### Rubocop
 
@@ -49,7 +51,6 @@ The rubocop generator is designed to be used in the following different situatio
 
 1) On initial setup of rubocop in a project, to set up the tool.
 2) When updates to the rubocop cops occur (new versions of [Rubocop](https://github.com/bbatsov/rubocop/) are provided, with new rules)
-3) When setting up a new developer environment, to help them run rubocop as part of their development workflow
 
 For detailed instructions on the rubocop generator and its options, [check out the rubocop readme](rubocop.md)
 
