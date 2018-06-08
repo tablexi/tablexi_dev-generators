@@ -1,39 +1,24 @@
-# TablexiDev::Generators
+# Table XI Dev Generators
 
-Set of generators for Table XI projects.
+A recommended set of generators for Table XI projects.
 
 ## Usage
 
 Install everything:
 
 ```bash
-rails g tablexi_dev:all
+bundle exec rails g tablexi_dev:all
 ```
 
 Install just the ones you want:
 
 ```bash
-bin/rails g tablexi_dev:rubocop
-bin/rails g tablexi_dev:unicorn
+bundle exec rails g tablexi_dev:rubocop
+bundle exec rails g tablexi_dev:unicorn
 ```
 
-### The Generators
-
-#### Rubocop
-
-The rubocop generator is designed to be used in the following different situations:
-
-1) On initial setup of rubocop in a project, to set up the tool.
-2) When updates to the rubocop cops occur (new versions of [Rubocop](https://github.com/bbatsov/rubocop/) are provided, with new rules)
-3) When setting up a new developer environment, to help them run rubocop as part of their development workflow
-
-For detailed instructions on the rubocop generator and its options, [check out the rubocop readme](rubocop.md)
-
-#### Unicorn
-
-The unicorn generator sets up a project's unicorn configuration files.
-
 ## Installation
+
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -52,9 +37,25 @@ Or install it yourself as:
 $ gem install tablexi_dev-generators
 ```
 
-### Upgrading
+## Upgrading
 
 After upgrading it's recommended that you re-run the generators and verify that the changed files are correct.
+
+## The Generators
+
+### Rubocop
+
+The rubocop generator is designed to be used in the following different situations:
+
+1) On initial setup of rubocop in a project, to set up the tool.
+2) When updates to the rubocop cops occur (new versions of [Rubocop](https://github.com/bbatsov/rubocop/) are provided, with new rules)
+3) When setting up a new developer environment, to help them run rubocop as part of their development workflow
+
+For detailed instructions on the rubocop generator and its options, [check out the rubocop readme](rubocop.md)
+
+### Unicorn
+
+The unicorn generator sets up a project's unicorn configuration files.
 
 ## Circle CI issue with Private repository
 
