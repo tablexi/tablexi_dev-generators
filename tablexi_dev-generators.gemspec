@@ -11,9 +11,9 @@ Gem::Specification.new do |s|
   s.version     = TablexiDev::Generators::VERSION
   s.authors     = ["Table XI"]
   s.email       = ["devs@tablexi.com"]
-  s.homepage    = "https://www.tablexi.com"
-  s.summary     = "Summary of TablexiDev::Generators."
-  s.description = "Description of TablexiDev::Generators."
+  s.homepage    = "https://github.com/tablexi/tablexi_dev-generators"
+  s.summary     = "A recommended set of generators for Table XI projects.."
+  s.description = ""
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]

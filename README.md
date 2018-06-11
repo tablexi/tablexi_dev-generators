@@ -2,7 +2,7 @@
 
 A recommended set of generators for Table XI projects.
 
-## Usage
+## Example usage
 
 Install everything:
 
@@ -16,15 +16,16 @@ Or install only the ones you want:
 bundle exec rails g tablexi_dev:git_hook
 bundle exec rails g tablexi_dev:rubocop
 bundle exec rails g tablexi_dev:unicorn
+# ...
 ```
 
-## Installation
+## Installing this gem
 
 Add this line to your application's Gemfile:
 
 ```ruby
 group :development do
-  gem "tablexi_dev-generators", git: "git@github.com:tablexi/tablexi_dev-generators.git"
+  gem "tablexi_dev-generators"
 end
 ```
 
@@ -33,19 +34,23 @@ And then execute:
 $ bundle
 ```
 
-## Upgrading
+## Upgrading this gem
 
 After upgrading this gem, it's recommended that you re-run the generators and verify that the changed files are correct.
 
-## The Generators
+## All available generators
 
-### Git Hooks
+### Generator: Git hooks
+
+    bundle exec rails g tablexi_dev:git_hook
 
 This generator will guide you through installing git hooks. If you do not have a strong preference, we recommend installing the `pre-push` rubocop hook.
 
 Because git hooks do not get checked into the remote repository, it's recommended that each team member run this generator upon installing any project on their local machine.
 
-### Rubocop
+### Generator: Rubocop
+
+    bundle exec rails g tablexi_dev:rubocop
 
 The rubocop generator is designed to be used in the following different situations:
 
@@ -54,37 +59,8 @@ The rubocop generator is designed to be used in the following different situatio
 
 For detailed instructions on the rubocop generator and its options, [check out the rubocop readme](rubocop.md)
 
-### Unicorn
+### Generator: Unicorn
+
+    bundle exec rails g tablexi_dev:rubocop
 
 The unicorn generator sets up a project's unicorn configuration files.
-
-## Circle CI issue with Private repository
-
-Note: when using Circle CI, if you want to check out the private `tablexi_dev-generators` git repo, you will have to authorize a User Key.
-
-Instead of providing a private user key, we recommend refraining from gem-installing the `development` group as follows.
-
-### CircleCI 1.0 - configure the system bundle config:
-
-```
-dependencies:
-  pre:
-    - gem install bundler # newer versions of bundler handle 'without' better
-    - bundle config without development
-```
-
-### CircleCI 2.0 - adjust the `bundle install` command:
-
-```
-version: 2
-jobs:
-  build:
-
-    ...
-
-    steps:
-
-      ...
-
-      - run: bundle install --without=development --path vendor/bundle
-```
