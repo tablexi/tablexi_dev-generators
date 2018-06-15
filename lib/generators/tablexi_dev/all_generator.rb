@@ -4,7 +4,7 @@ module TablexiDev
 
   module Generators
 
-    class AllGenerator < Rails::Generators::Base
+    class AllGenerator < BaseGenerator
 
       GENERATORS = %i[
         git_hook

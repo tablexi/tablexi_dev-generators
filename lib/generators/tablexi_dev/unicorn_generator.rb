@@ -4,7 +4,7 @@ module TablexiDev
 
   module Generators
 
-    class UnicornGenerator < Rails::Generators::Base
+    class UnicornGenerator < BaseGenerator
 
       source_root File.expand_path("../unicorn_generator/templates", __FILE__)
 
