@@ -4,7 +4,7 @@ module TablexiDev
 
   module Generators
 
-    class GitHookGenerator < Rails::Generators::Base
+    class GitHookGenerator < BaseGenerator
 
       source_root File.expand_path("../git_hook_generator/files/", __FILE__)
 
@@ -23,8 +23,8 @@ module TablexiDev
         general_path = ".git/hooks/pre-#{type}"
 
         # Copy files from this generator into the project
-        copy_file "rubocop-pre-#{type}", rubocop_path
-        copy_file "general-pre-#{type}", general_path unless File.exist?(general_path)
+        copy_file_and_set_executable "rubocop-pre-#{type}", rubocop_path
+        copy_file_and_set_executable "general-pre-#{type}", general_path unless File.exist?(general_path)
 
         # Ensure we do not append to the general hook file more than once
         unless File.readlines(general_path).grep(/rubocop-pre-#{type}/).size > 0

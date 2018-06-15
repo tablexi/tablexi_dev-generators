@@ -4,7 +4,7 @@ module TablexiDev
 
   module Generators
 
-    class RubocopGenerator < Rails::Generators::Base
+    class RubocopGenerator < BaseGenerator
 
       source_root File.expand_path("../rubocop_generator/files/", __FILE__)
 
@@ -35,11 +35,6 @@ module TablexiDev
         unless File.exist?(".rubocop-project_overrides.yml") # rubocop:disable Style/GuardClause
           copy_file "dot_rubocop-project_overrides.yml", ".rubocop-project_overrides.yml"
         end
-      end
-
-      def copy_and_set_executable(source_file, target_file)
-        copy_file source_file, target_file
-        chmod target_file, 0o755
       end
 
     end
