@@ -23,12 +23,12 @@ module TablexiDev
         general_path = ".git/hooks/pre-#{type}"
 
         # Copy files from this generator into the project
-        copy_and_set_executable("rubocop-pre-#{type}", rubocop_path)
-        copy_and_set_executable("general-pre-#{type}", general_path) unless File.exist?(general_path)
+        copy_file "rubocop-pre-#{type}", rubocop_path
+        copy_file "general-pre-#{type}", general_path unless File.exist?(general_path)
 
         # Ensure we do not append to the general hook file more than once
         unless File.readlines(general_path).grep(/rubocop-pre-#{type}/).size > 0
-          append_to_file(general_path, "exec #{rubocop_path}")
+          append_to_file general_path, "exec #{rubocop_path}"
         end
       end
 
