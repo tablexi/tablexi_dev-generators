@@ -64,3 +64,15 @@ For detailed instructions on the rubocop generator and its options, [check out t
     bundle exec rails g tablexi_dev:rubocop
 
 The unicorn generator sets up a project's unicorn configuration files.
+
+
+## Publishing this gem
+
+1. Bump the version in `lib/tablexi_dev/generators/version.rb` according to [semver](https://semver.org/)
+2. Commit `lib/tablexi_dev/generators/version.rb` to master and push
+3. [Draft a github release](https://github.com/tablexi/tablexi_dev-generators/releases) with new vesion number and add a description that follows the convention of the existing releases
+4. Publish the release
+5. Checkout `master` and pull the latest
+6. Make sure you are a [tablexi_dev-generators owner on rubygems.org](https://rubygems.org/gems/tablexi_dev-generators). If not, have an existing owner run `tablexi_dev-generators -a you@example.com`.
+7. Run `gem build tablexi_dev-generators`
+8. Run `gem push tablexi_dev-generators-<version>.gem` with file that was generated from the previous step
