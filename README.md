@@ -75,5 +75,3 @@ The unicorn generator sets up a project's unicorn configuration files.
 5. Checkout `master` and pull the latest
 6. Run `gem build tablexi_dev-generators`
 7. Run `gem push tablexi_dev-generators-<version>.gem` with file that was generated from the previous step
-4. 
-4. 
