@@ -3,54 +3,23 @@
 # You should NOT make any changes to this file, as it will be overwritten
 # the next time we update the tablexi_dev-generators gem and run
 # `rails generate tablexi_dev:rubocop`
+#
+# Please keep cops in alphabetical order so they're easy to find/scan.
 AllCops:
   DisplayCopNames: true
   Exclude:
-    - "db/schema.rb" # You can't touch this
     - ".bundle/**/*" # Auto-generated
     - "bin/**/*"     # Auto-generated
+    - "db/schema.rb" # You can't touch this
     - "vendor/**/*"  # We cannot solve the world's problems
   TargetRubyVersion: 2.4
   TargetRailsVersion: 5.1
-Rails:
-  Enabled: true
-
-Lint/HandleExceptions:
-  Exclude:
-    - "config/unicorn/*"
-
-Metrics/AbcSize:
-  Max: 25
-  Exclude:
-    - "db/**/*" # Sometimes migrations are complex.
-
-Metrics/LineLength:
-  Max: 120
-
-Metrics/MethodLength:
-  Max: 20
-  Exclude:
-    - "db/**/*" # Again, sometimes DB migrations are long.
-
-Metrics/BlockLength:
-  Exclude:
-    # These are naturally DSL-y, and so let's be lenient.
-    - "spec/**/*"
-    - "config/routes.rb"
-
-Style/ClassAndModuleChildren:
-  Exclude:
-    - "app/controllers/**/*" # We generally use compact style here
-
-Style/Documentation:
-  Exclude:
-    - "db/**/*" # No need to require migrations to be documented.
 
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
     # These are naturally DSL-y, and so let's be lenient.
-    - "spec/**/*"
     - "lib/tasks/*.rake"
+    - "spec/**/*"
 
 Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
@@ -64,14 +33,66 @@ Layout/ExtraSpacing:
   Exclude:
     - "db/migrate/*" # Generated migrations often have extra spacing
 
-Style/SignalException:
-  EnforcedStyle: only_raise
-
 Layout/SpaceBeforeFirstArg:
   Exclude:
     # We often add extra spaces for alignment in factories.
-    - "spec/factories/**/*"
     - "db/migrate/*" # We often add extra spaces for alignment in migrations.
+    - "spec/factories/**/*"
+
+Lint/HandleExceptions:
+  Exclude:
+    - "config/unicorn/*"
+
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - "db/**/*" # Sometimes migrations are complex.
+
+Metrics/BlockLength:
+  Exclude:
+    # These are naturally DSL-y, and so let's be lenient.
+    - "config/routes.rb"
+    - "db/seeds/**/*"
+    - "spec/**/*"
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - "config/initializers/**/*" # Some generated initializers are long.
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/**/*" # Again, sometimes DB migrations are long.
+
+Rails:
+  Enabled: true
+
+Rails/ApplicationRecord:
+  Exclude:
+    - "db/**/*" # Migrations should be isolated, models defined there should NOT inherit from ApplicationRecord
+
+Rails/Output:
+  Exclude:
+    - "db/seeds/**/*" # Allow `puts` from inside seed files
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - production
+    - stage
+    - test
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - "app/controllers/**/*" # We generally use compact style here
+
+Style/Documentation:
+  Exclude:
+    - "db/**/*" # No need to require migrations to be documented.
+
+Style/SignalException:
+  EnforcedStyle: only_raise
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -87,14 +108,3 @@ Style/TrailingCommaInHashLiteral:
 
 Style/TrivialAccessors:
   ExactNameMatch: true
-
-Rails/UnknownEnv:
-  Environments:
-    - production
-    - development
-    - test
-    - stage
-
-Rails/ApplicationRecord:
-  Exclude:
-    - "db/**/*" # Migrations should be isolated, models defined there should NOT inherit from ApplicationRecord
