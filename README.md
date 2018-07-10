@@ -61,7 +61,7 @@ For detailed instructions on the rubocop generator and its options, [check out t
 
 ### Generator: Unicorn
 
-    bundle exec rails g tablexi_dev:rubocop
+    bundle exec rails g tablexi_dev:unicorn
 
 The unicorn generator sets up a project's unicorn configuration files.
 
